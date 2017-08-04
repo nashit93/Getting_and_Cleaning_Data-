@@ -38,12 +38,10 @@ colnames(merged_y) <- 'activity'
 colnames(merged_sub) <- 'subject'
 
 data <- cbind(merged_sub, raw_mean_sd_values, merged_y)
-write.table(data, 'Project/merged.txt', row.names = F)
+write.table(data, 'merged.txt', row.names = F)
 
 # Average of each variable for each activity and each subject. 
 average <- aggregate(x=data, by=list(activities=data$activity, subj=data$subject), FUN=mean)
 average <- average[, !(colnames(average.df) %in% c("subj", "activity"))]
 str(average)
-write.table(average, 'Project/average.txt', row.names = F)
-
-
+write.table(average, 'average.txt', row.names = F)
