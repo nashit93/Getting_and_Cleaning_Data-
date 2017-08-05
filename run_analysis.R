@@ -1,4 +1,14 @@
-setwd("/Users/Allu/Downloads/UCI HAR Dataset 2/")
+filename <- "getdata_dataset.zip"
+
+## Download and unzip the dataset:
+if (!file.exists(filename)){
+  fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "
+  download.file(fileURL, filename, method="curl")
+}  
+if (!file.exists("UCI HAR Dataset")) { 
+  unzip(filename) 
+}
+
 # Importing All the datas
 train_raw <- read.table('train/X_train.txt');
 test_raw <- read.table('test/X_test.txt');
